@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/add_team.css') }}">
+    <title>Add A team</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Start a Team!</h1>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+    <div class="add_team">
+        <h3>Add your Favorite Team</h3>
+        <form action="/teams/add" method="POST">
+            {% with messages = get_flashed_messages(category_filter=["team_add"]) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p class="error_msg">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="form_field">
+                <label>City: </label>
+                <input type="text" name="city" class="input">
+            </div>
+            <div class="form_field">
+                <label>Team Name:</label>
+                <input type="text" name="team_name" class="input">
+            </div>
+            <input type="submit" value="Create Team" class="submit_btn">
+            <a href="/teams" class="cancel_btn">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

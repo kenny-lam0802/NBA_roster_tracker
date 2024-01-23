@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    margin: 15px 15px;
+    color: rgb(58, 58, 145);
+    text-shadow: 1px 1px black;
+    text-decoration: underline;
+}
+
+body{
+    background-image: url('/static/img/add_player.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.add_player{
+    border: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+    margin: 50px 500px;
+    background-color: rgba(250, 235, 215);
+    opacity: 0.7;
+}
+
+.logout{
+    float: right;
+    margin-right: 50px;
+    font-size: large;
+    color: skyblue;
+}
+
+.logout:hover{
+    color: navy;
+}
+
+hr{
+    margin: 50px 20px;
+    border: 1px solid silver;
+}
+
+h3{
+    color: rgb(74, 74, 173);
+    text-align: center;
+}
+
+.form_field{
+    margin: 0px;
+    font-weight: bold;
+}
+
+.input{
+    float: right;
+    width: 100%;
+}
+
+#form_btns{
+    text-align: center;
+}
+
+.submit_btn{
+    background-color: green;
+    font-weight: bold;
+    padding: 5px;
+    color: white;
+    margin-right: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.submit_btn:hover{
+    transform: translateX(-10px);
+    transform: translateY(5px);
+    box-shadow: 2px 2px black;
+    color: yellow;
+}
+
+.cancel_btn{
+    border: 1px solid;
+    background-color: red;
+    font-weight: bold;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+.cancel_btn:hover{
+    transform: translateX(10px);
+    transform: translateY(5px);
+    box-shadow: 2px 2px black;
+}
+
+.error_msg{
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('/static/img/view_team.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#team_name{
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.logout{
+    float: right;
+    margin-right: 50px;
+    font-size: large;
+    color: skyblue;
+}
+
+#nav{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid silver;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgb(15, 32, 144);
+}
+
+.link_text{
+    color: rgb(198, 11, 11);
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.link_text:hover{
+    color: yellow;
+}
+
+#roster_box{
+    border: 1px solid white;
+    background-color: rgb(206, 192, 192);
+    text-align: center;
+    padding: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 50px;
+    opacity: .7;
+}
+
+.roster_title{
+    color: rgb(71, 7, 81);
+    font-size: xx-large;
+    text-shadow: 2px 2px 2px gray;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.player_text{
+    margin: 20px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.player_link:hover{
+    text-decoration: none;
+    color: green;
+}

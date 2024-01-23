@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/all_teams.css') }}">
+    <title>NBA Teams</title>
+</head>
+<body>
+    <div class="header">
+        <div id="banner_text">
+            <h1>Welcome {{logged_in_user.first_name}} {{logged_in_user.last_name}}!</h1>
+            <h3>Stay up to date with current teams and rosters</h3>
+        </div>
+        <a href="/logout" class="logout_btn">Log Out</a>
+    </div>
+    <div class="nav">
+        <a href="/teams/new" class="link_text">Click to Add a Team</a>
+        <a href="/players/add" class="link_text"> Click to Add Players</a>
+        <a href="/players" class="link_text"> Click to View Players</a>
+    </div>
+    <h2>All the Teams:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Team Name</th>
+                <th>Added On</th>
+                <th>Last Updated On</th>
+                <th>Added By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for this_team in all_teams %}
+            <tr>
+                <td>{{this_team.city}}</td>
+                <td>{{this_team.team_name}}</td>
+                <td>{{this_team.created_at}}</td>
+                <td>{{this_team.updated_at}}</td>
+                <td>{{this_team.user.first_name}}</td>
+                <td>
+                    <a href="/teams/view/{{this_team.id}}">Roster | </a>
+                    {% if this_team.user.id == session["user_id"] %}
+                        <a href="/teams/edit/{{this_team.id}}">Edit | </a>
+                        <a href="/teams/delete/{{this_team.id}}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

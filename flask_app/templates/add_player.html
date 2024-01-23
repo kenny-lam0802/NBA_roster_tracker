@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/add_player.css') }}">
+    <title>Add a Player</title>
+</head>
+<body>
+    <div id="header">
+        <h1>{{logged_in_user.first_name}}, Add Your Favorite Players</h1>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+    <hr>
+    <div class="add_player">
+        <h3>Add Your Favorite Player</h3>
+        <form action="/new/player" method="POST">
+            {% with messages = get_flashed_messages(category_filter=["player"]) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p class="error_msg">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="form_field">
+                <label for="first_name">First Name: </label>
+                <input type="text" name="first_name" class="input">
+            </div>
+            <div class="form_field">
+                <label for="last_name">Last Name: </label>
+                <input type="text" name="last_name" class="input">
+            </div>
+            <div class="form_field">
+                <label for="position">Position: </label>
+                <input type="text" name="position" class="input">
+            </div>
+            <div class="form_field">
+                <label for="number">Jersey Number: </label>
+                <input type="number" name="number" class="input">
+            </div>
+            <div class="form_field">
+                <label for="age">Age: </label>
+                <input type="number" name="age" class="input">
+            </div>
+            <div class="form_field">
+                <label for="team">Team:</label>
+                <select name="team_id" class="input">
+                    {% for each_team in all_teams %}
+                        <option value="{{each_team.id}}">{{ each_team.city }} {{each_team.team_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="form_btns">
+                <input type="submit" value="Create this Player" class="submit_btn">
+                <a href="/players" class="cancel_btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

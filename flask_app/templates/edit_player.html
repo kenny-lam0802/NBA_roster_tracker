@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/edit_player.css') }}">
+    <title>Edit Player Info</title>
+</head>
+<body>
+    <div class="edit_player">
+        <h1>Edit {{one_player.first_name}} {{one_player.last_name}}</h1>
+        <form action="/players/edit" method="POST">
+            {% with messages = get_flashed_messages(category_filter=["player"]) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p class="error_msg">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <input type="hidden" name="id" value="{{one_player.id}}">
+            <div class="form_field">
+                <label for="first_name">First Name: </label>
+                <input type="text" name="first_name" value="{{one_player.first_name}}" class="input">
+            </div>
+            <div class="form_field">
+                <label for="last_name">Last Name: </label>
+                <input type="text" name="last_name" value="{{one_player.last_name}}" class="input">
+            </div>
+            <div class="form_field">
+                <label for="position">Position: </label>
+                <input type="text" name="position" value="{{one_player.position}}" class="input">
+            </div>
+            <div class="form_field">
+                <label for="number">Number: </label>
+                <input type="number" name="number" value="{{one_player.number}}" class="input">
+            </div>
+            <div class="form_field">
+                <label for="age">Age: </label>
+                <input type="number" name="age" value="{{one_player.age}}" class="input">
+            </div>
+            <div class="form_field">
+                <label for="team">Team: </label>
+                <select name="team_id" class="input">
+                    {% for each_team in all_teams %}
+                        {% if each_team.id == one_player.team.id %}
+                            <option value="{{each_team.id}}" selected>{{each_team.city}} {{each_team.team_name}}</option>
+                        {% else %}
+                            <option value="{{each_team.id}}">{{each_team.city}} {{each_team.team_name}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="form_btns">
+                <input type="submit" value="Save Changes" class="submit_btn">
+                <a href="/players" class="cancel_btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

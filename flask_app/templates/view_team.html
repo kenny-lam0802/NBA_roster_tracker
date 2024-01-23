@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/view_team.css') }}">
+    <title>{{one_team.city}} {{one_team.team_name}}</title>
+</head>
+<body>
+    {% if one_team == None %}
+        <h1>This Team does not exist!</h1>
+    {% else %}
+        <h1 id="team_name">{{one_team.city}} {{one_team.team_name}}</h1>
+        <a href="/logout" class="logout">Logout</a>
+        <div id="nav">
+            <a href="/teams" class="link_text">View Teams</a>
+            <a href="/players" class="link_text">See All Players</a>
+        </div>
+        <div id="roster_box">
+            <p class="roster_title">Roster:</p>
+                {%if one_team.players[0].id == None %}
+                    <h1>No Players on this roster</h1>
+                {% else %}
+                    {% for this_player in one_team.players %} 
+                    <p class="player_text"><a href="/players/view/{{this_player.id}}" class="player_link">{{this_player.first_name}} {{this_player.last_name}}</a></p>
+                    {% endfor %}
+                    
+                {% endif %} 
+        </div>
+    {% endif %}
+</body>
+</html>

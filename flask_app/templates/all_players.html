@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/all_players.css') }}">
+    <title>All Players</title>
+</head>
+<body>
+    <h1>All Players</h1>
+    <div id="header">
+        <p></p>
+        <a href="/logout" class="logout_btn">Logout</a>
+    </div>
+    <div id="nav">
+        <a href="/players/add" class="link_text">Add a player</a>
+        <a href="/teams" class="link_text">View Teams</a>
+        <a href="/teams/new" class="link_text">Add a Team</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Number</th>
+                <th>Age</th>
+                <th>Team</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for each_player in all_players %}
+            <tr>
+                <td>{{each_player.first_name}} {{each_player.last_name}}</td>
+                <td>{{each_player.position}}</td>
+                <td>{{each_player.number}}</td>
+                <td>{{each_player.age}}</td>
+                <td>{{each_player.team.city}} {{each_player.team.team_name}}</td>
+                <td>
+                    <a href="/players/view/{{each_player.id}}">View</a>
+                    <a href="/players/{{each_player.id}}/edit">Edit</a>
+                    {% if each_player.user.id == session["user_id"] %}
+                        <a href="/players/{{each_player.id}}/delete">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

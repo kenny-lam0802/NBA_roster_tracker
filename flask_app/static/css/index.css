@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('/static/img/index.jpg');
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+#header{
+    text-align: center;
+    margin: 30px;
+
+}
+.site_name{
+    color: blue;
+    text-shadow: black 0px 0px 20px;
+}
+
+h3{
+    color: red;
+    margin: 10px;
+}
+
+#container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.form_heading{
+    margin-bottom: 30px;
+    color:rgb(41, 18, 132);
+    text-decoration: underline;
+}
+
+.form_field{
+    margin: 30px;
+    text-align: left;
+}
+
+.input{
+    float: right;
+    width: 100%;
+}
+
+label{
+    font-weight: bolder;
+}
+
+#registration{
+    border: 2px solid black;
+    padding: 50px;
+    text-align: center;
+    background-color: rgb(141, 163, 177);
+    border-radius: 50px;
+    box-shadow: 5px 5px rgb(74, 74, 74);
+}
+
+#login{
+    border: 2px solid black;
+    padding: 50px;
+    text-align: center;
+    background-color: floralwhite;
+    border-radius: 50px;
+    box-shadow: 7px 7px gray;
+}
+
+.register_btn{
+    text-align: center;
+    padding: 8px;
+    margin-top: 5px;
+    font-weight: bold;
+    background-color: palegreen;
+    cursor: pointer;
+}
+
+.register_btn:hover{
+    transform: translateY(5px);
+    box-shadow: inset 3px 3px;
+}
+
+.login_btn{
+    text-align: center;
+    padding: 8px;
+    margin-top: 5px;
+    font-weight: bold;
+    background-color: rgb(30, 209, 228);
+    cursor: pointer;
+}
+
+.login_btn:hover{
+    transform: translateX(5px);
+    box-shadow: inset 3px 3px;
+}
+
+.error_msg{
+    color: maroon;
+    font-weight: bolder;
+}

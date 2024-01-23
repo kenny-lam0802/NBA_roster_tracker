@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
+    <title>NBA Tracker</title>
+</head>
+<body>
+    <div id="header">
+        <h1 class="site_name">Welcome to the NBA tracker app!</h1>
+        <h3>Stay up to date with current teams and rosters</h3>
+    </div>
+    <div id="container">
+        <div id="registration">
+            <h2 class="form_heading">Register</h2>
+            {% with messages = get_flashed_messages(category_filter=["registration"]) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p class="error_msg">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/register" method = "POST">
+                
+                <div class="form_field">
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name" class="input">
+                </div>
+                <div class="form_field">
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" name="last_name" class="input">
+                </div>
+                <div class="form_field">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" class="input">
+                </div>
+                <div class="form_field">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" class="input">
+                </div>
+                <div class="form_field">
+                    <label for="confirm_password">Confirm Password: </label>
+                    <input type="password" name="confirm_password" class="input">
+                </div>
+                <input type="submit" value="Register" class="register_btn">
+            </form>
+        </div>
+        <h2 style="color: white; border: 1px solid; background-color: black;">OR</h2>
+        <div id="login">
+            <h2 class="form_heading">Log In</h2>
+            {% with messages = get_flashed_messages(category_filter = ['login']) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p class="error_msg">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/login" method = "POST">
+                <div class="form_field">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" class="input">
+                </div>
+                <div class="form_field">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" class="input">
+                </div>
+                <input type="submit" value="Log In" class="login_btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
